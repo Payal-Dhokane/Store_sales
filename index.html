@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Store Sales Predictor</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            width: 320px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Store Sales Predictor</h2>
+        <form action="/predict" method="post">
+            <input type="number" name="store_nbr" placeholder="Store Number" required>
+            <input type="number" name="family" placeholder="Product Family" required>
+            <input type="number" name="onpromotion" placeholder="On Promotion (0/1)" required>
+            <input type="number" name="day" placeholder="Day" required>
+            <input type="number" name="month" placeholder="Month" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction %}
+            <h3>{{ prediction }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
